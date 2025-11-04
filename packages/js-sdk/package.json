@@ -1,0 +1,18 @@
+{
+  "name": "@auralforge/sdk",
+  "version": "0.1.0",
+  "description": "Official JavaScript SDK for the Aural Forge Audio AI platform.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  }
+}

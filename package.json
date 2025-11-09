@@ -1,0 +1,19 @@
+{
+  "name": "audio-ai-studio",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/js-sdk"
+  ],
+  "scripts": {
+    "bootstrap": "npm install --workspaces",
+    "lint": "npm run lint --workspaces",
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: Aural Forge API
+  version: 0.1.0
+servers:
+  - url: https://api.auralforge.ai
+    description: Production
+  - url: https://sandbox.auralforge.ai
+    description: Sandbox
+paths:
+  /v1/tts/synthesize:
+    post:
+      summary: Create a text-to-speech job
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TtsRequest'
+      responses:
+        '202':
+          description: Job accepted
+  /v1/stt/transcribe:
+    post:
+      summary: Submit an audio or video file for transcription
+      security:
+        - bearerAuth: []
+      responses:
+        '202':
+          description: Job accepted
+  /v1/voices/catalog:
+    get:
+      summary: List available voices
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Voices retrieved
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    TtsRequest:
+      type: object
+      required:
+        - voiceId
+        - text
+      properties:
+        voiceId:
+          type: string
+        text:
+          type: string
+        language:
+          type: string
+        format:
+          type: string
+          enum: [mp3, wav, pcm]

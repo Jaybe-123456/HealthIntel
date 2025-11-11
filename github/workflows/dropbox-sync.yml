@@ -1,0 +1,21 @@
+name: Sync HealthIntel to Dropbox
+
+on:
+  push:
+    branches:
+      - main  # change if you use another branch
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Upload HealthIntel to Dropbox
+        uses: andreafspeziale/dropbox-upload@v1.2
+        with:
+          dropbox_access_token: ${{ secrets.DROPBOX_TOKEN }}
+          src: ./HealthIntel
+          dest: /GitHubBackups/HealthIntel

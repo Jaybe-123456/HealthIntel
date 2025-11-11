@@ -1,19 +1,25 @@
-name: Sync HealthIntel to Dropbox
+name: Two-way Sync HealthIntel ↔ Dropbox
 
 on:
   push:
     branches:
-      - main  # change if you use another branch
+      - main  # or your branch
 
 jobs:
-  upload:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Upload HealthIntel to Dropbox
+      - name: Download from Dropbox
+        run: |
+          curl -L "https://www.dropbox.com/scl/fo/8b7c584wjtmqu1irhpg7c/AFiZQ2njyrcUO6_fDbXT9Zk?dl=1" \
+            --output HealthIntel.zip
+          unzip HealthIntel.zip -d HealthIntel/
+
+      - name: Upload updated HealthIntel to Dropbox
         uses: andreafspeziale/dropbox-upload@v1.2
         with:
           dropbox_access_token: ${{ secrets.DROPBOX_TOKEN }}

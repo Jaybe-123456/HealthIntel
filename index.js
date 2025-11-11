@@ -1,19 +1,28 @@
 const express = require("express");
-const path = require("path");
+const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Serve static files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, "public")));
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-// Default route (when visiting "/")
+// Root route
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.json({ message: "🚀 HealthIntel backend is live and running smoothly!" });
+});
+
+// Example API route
+app.get("/api/status", (req, res) => {
+  res.json({
+    service: "HealthIntel",
+    status: "operational",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`🚀 HealthIntel server is running at http://localhost:${PORT}`);
+  console.log(`✅ HealthIntel backend is running on port ${PORT}`);
 });
-

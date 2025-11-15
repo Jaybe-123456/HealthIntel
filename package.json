@@ -2,6 +2,7 @@
   "name": "healthintel",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -20,6 +21,6 @@
   "homepage": "https://github.com/Jaybe-123456/HealthIntel#readme",
   "dependencies": {
     "@fastify/cors": "^11.1.0",
-    "express": "^5.1.0"
+    "fastify": "^4.28.0"
   }
 }

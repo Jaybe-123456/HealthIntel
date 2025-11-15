@@ -5,9 +5,23 @@ const fastify = Fastify({
   logger: true,
 });
 
-// Register CORS
+// Allowed origins
+const allowedOrigins = [
+  "https://audio-artist-app-k4r1-h4d6m3igd-jaybe-123456.vercel.app"
+];
+
+// Register CORS with dynamic origin checking
 await fastify.register(fastifyCors, {
-  origin: "*", // allow all (or customize)
+  origin: (origin, cb) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Allow request
+      cb(null, true);
+      return;
+    }
+    // Reject others
+    cb(new Error("Not allowed by CORS"));
+  },
+  credentials: true // if you need cookies/auth headers
 });
 
 // Root route

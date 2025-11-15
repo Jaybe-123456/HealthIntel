@@ -1,26 +1,17 @@
 {
   "name": "healthintel",
   "version": "1.0.0",
-  "description": "",
+  "description": "HealthIntel backend service",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jaybe-123456/HealthIntel.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Jaybe-123456/HealthIntel/issues"
-  },
-  "homepage": "https://github.com/Jaybe-123456/HealthIntel#readme",
   "dependencies": {
     "@fastify/cors": "^11.1.0",
-    "fastify": "^5.0.0"
+    "@supabase/supabase-js": "^2.43.5",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "stripe": "^15.0.0"
   }
 }
